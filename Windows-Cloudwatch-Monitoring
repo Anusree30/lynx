@@ -1,0 +1,82 @@
+Window- Cloudwatch  Logging 
+ 
+Steps:
+Enable SSM creating IAM role
+Install Cloudwatch Agent on server using SSM run command
+Configure the cloud watch agent on server
+Start the cloudwatch agent
+ 
+To create the IAM role necessary for each server to run CloudWatch agent
+Sign in to the AWS Management Console and open the IAM console at https://console.aws.amazon.com/iam/.
+In the navigation pane on the left, choose Roles, Create role.
+For Choose the service that will use this role, choose EC2 Allows EC2 instances to call AWS services on your behalf. Choose Next: Permissions.
+In the list of policies, select the check box next to CloudWatchAgentServerPolicy. Use the search box to find the policy, if necessary.
+If you will use SSM to install or configure the CloudWatch agent, select the check box next toAmazonEC2RoleforSSM. Use the search box to find the policy, if necessary. This policy is not necessary if you will start and configure the agent only through the command line.
+Choose Next: Review
+Confirm that CloudWatchAgentServerPolicy and optionally AmazonEC2RoleforSSM appear next to Policies. In Role name, type a name for the role, such as CloudWatchAgentServerRole. Optionally give it a description, and choose Create role.
+The role is now created
+Attach this role to the EC2 instance.
+
+ 
+ 
+To download the CloudWatch agent using Run Command
+Open the Systems Manager console at https://console.aws.amazon.com/systems-manager/.
+In the navigation pane, choose Run Command.
+-or-
+If the AWS Systems Manager home page opens, scroll down and choose Explore Run Command.
+Choose Run command.
+In the Command document list, choose AWS-ConfigureAWSPackage.
+In the Targets area, choose the instance on which to install the CloudWatch agent. If you do not see a specific instance, it might not be configured for Run Command. For more information, see Systems Manager Prerequisites in the Amazon EC2 User Guide for Windows Instances.
+In the Action list, choose Install.
+In the Name field, type AmazonCloudWatchAgent.
+Leave Version set to latest to install the latest version of the agent.
+Choose Run.
+Optionally, in the Targets and outputs areas, select the button next to an instance name and choose View output. Systems Manager should show that the agent was successfully installed.
+
+
+
+
+
+
+
+Configuring Cloud watch Agent
+
+On a server running Windows Server, type the following:
+cd "C:\Program Files\Amazon\AmazonCloudWatchAgent"
+amazon-cloudwatch-agent-config-wizard.exe
+
+
+Answer the questions to customize the configuration file for your server.
+
+If you are going to use Systems Manager to install and configure the agent, be sure to answer Yes when prompted whether to store the file in Systems Manager Parameter Store
+
+To start the CloudWatch agent using Run Command
+Open the Systems Manager console at https://console.aws.amazon.com/systems-manager/.
+In the navigation pane, choose Run Command.
+In the Command document list, choose AmazonCloudWatch-ManageAgent.
+In the Targets area, choose the instance where you installed the CloudWatch agent.
+In the Action list, choose configure.
+In the Optional Configuration Source list, choose ssm.
+In the Optional Configuration Location box, type the name of the agent configuration file that you created and saved to Systems Manager Parameter Store, as explained in Create the CloudWatch Agent Configuration File.
+In the Optional Restart list, choose yes to start the agent after you have finished these steps.
+Choose Run.
+
+
+{To configure the same using cli 
+cd ${Env:ProgramFiles}\Amazon\AmazonCloudWatchAgent
+.\amazon-cloudwatch-agent-ctl.ps1 -a fetch-config -m ec2 -c file:config.json -s
+}
+
+
+The Logfiles can now be seen under Cloudwatch >Logs >LogGroups
+
+https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/UseCloudWatchUnifiedAgent.html
+https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/UseCloudWatchUnifiedAgent.html
+https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/UseCloudWatchUnifiedAgent.html
+https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-on-first-instance.html
+
+
+
+
+
+
