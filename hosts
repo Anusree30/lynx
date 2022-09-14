@@ -30,7 +30,7 @@
 
 [appserver]
 44.230.109.165
-54.201.241.176
+
 ## www[001:006].example.com
 
 # Ex 3: A collection of database servers in the 'dbservers' group
