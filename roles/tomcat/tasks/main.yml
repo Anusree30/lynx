@@ -6,7 +6,7 @@
 
 - name: clone of a single branch
   git:
-    repo: https://https://github.com/plusforum/helloworldweb.git
+    repo: https://github.com/plusforum/helloworldweb.git
     dest: ./
     single_branch: yes
     version: master
