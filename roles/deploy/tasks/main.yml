@@ -11,7 +11,7 @@
 
 - name: start tomcat
   become: yes
-  command: '/bin/sh /opt/tomcat/bin/startup.sh'  
+  command: '/bin/sh /opt/tomcat/bin/startup.sh' 
 
  
 
