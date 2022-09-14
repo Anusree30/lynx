@@ -7,7 +7,7 @@
 - name: clone of a single branch
   git:
     repo: https://github.com/plusforum/helloworldweb.git
-    dest: ./
+    dest: .
     clone: yes
  
 
