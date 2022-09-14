@@ -1,9 +1,12 @@
 - hosts: localhost
+  connection: local
   roles:
     - tomcat
  
 - hosts: appserver
+  remote_user: centos
+  become: true 
   roles:
-    - devops
+    - deploy
  
  
