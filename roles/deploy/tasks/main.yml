@@ -4,9 +4,9 @@
     path: /opt/tomcat/webapps/Helloworldwebapp-dev.war
     state: absent
 
-- name: clone of a single branch
+- name: copy file
   copy:
-    src: './Helloworldwebapp-dev.war'
+    src: '/home/centos/jenkins/workspace/devops1/Helloworldwebapp-dev.war'
     dest: '/opt/tomcat/webapps'
 
 - name: start tomcat
