@@ -2,11 +2,6 @@
   connection: local
   roles:
     - tomcat
- 
-- hosts: appserver
-  remote_user: centos
-  become: true 
-  roles:
     - deploy
  
  
