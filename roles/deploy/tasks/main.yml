@@ -10,7 +10,8 @@
     dest: '/opt/tomcat/webapps'
 
 - name: start tomcat
-  command: 'sudo  /bin/sh /opt/tomcat/bin/startup.sh'  
+  become: yes
+  command: '/bin/sh /opt/tomcat/bin/startup.sh'  
 
  
 
