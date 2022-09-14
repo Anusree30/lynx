@@ -25,7 +25,8 @@
 
 # If you have multiple hosts following a pattern you can specify
 # them like this:
-[localhost]
+[webserver]
+44.230.109.165
 54.201.241.176
 
 [appserver]
