@@ -1,9 +1,9 @@
-- hosts: localhost
+- hosts: appserver
   connection: local
   roles:
     - tomcat
  
-- hosts: appserver
+- hosts: localhost
   remote_user: centos
   become: true 
   roles:
