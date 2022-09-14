@@ -4,6 +4,6 @@
  
 - hosts: appserver
   roles:
-    - devops
+    - deploy
  
  
