@@ -1,0 +1,17 @@
+---
+- name: Recursively remove directory
+  file:
+    path: /opt/tomcat/webapps/Helloworldwebapp-dev.war
+    state: absent
+
+- name: clone of a single branch
+  copy:
+    src: './Helloworldwebapp-dev.war'
+    dest: '/opt/tomcat/webapps'
+
+- name: start tomcat
+  command: 'sudo  /bin/sh /opt/tomcat/bin/startup.sh'  
+
+ 
+
+

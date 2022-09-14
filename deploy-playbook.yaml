@@ -1,0 +1,9 @@
+- hosts: localhost
+  roles:
+    - tomcat
+ 
+- hosts: appserver
+  roles:
+    - devops
+ 
+ 
