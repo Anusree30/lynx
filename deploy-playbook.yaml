@@ -4,7 +4,7 @@
     - tomcat
     - deploy
     
-- hosts: appserver
+- hosts: webserver
   remote_user: centos
   become: yes
   roles:
