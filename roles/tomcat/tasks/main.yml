@@ -1,13 +1,13 @@
 ---
 - name: Recursively remove directory
   file:
-    path: /home/centos/jenkins/workspace/helloworldweb
+    path: ./Helloworldwebapp-dev.war
     state: absent
 
 - name: clone of a single branch
   git:
     repo: https://https://github.com/plusforum/helloworldweb.git
-    dest: /home/centos/jenkins/workspace
+    dest: ./
     single_branch: yes
     version: master
 
