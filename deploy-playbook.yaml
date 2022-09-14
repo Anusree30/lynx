@@ -3,5 +3,12 @@
   roles:
     - tomcat
     - deploy
- 
+    
+- hosts: appserver
+  remote_user: centos
+  become: yes
+  roles:
+    - tomcat
+
+
  
